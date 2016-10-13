@@ -3,6 +3,7 @@
 <plist version="1.0">
   <dict>
     <key>Label</key> <string>Concourse via Vagrant</string>
+    <key>UserName</key> <string>pivotal</string>
     <key>Program</key> <string>/Users/pivotal/workspace/macmini-autorun/concourse.sh</string>
     <key>RunAtLoad</key> <true/>
   </dict>
