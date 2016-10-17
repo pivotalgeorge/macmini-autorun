@@ -19,7 +19,7 @@ log_error() {
 }
 
 if [ ! -d $LOG_PATH ]; then
-  mkdir -p $LOG_PATH
+   mkdir -p $LOG_PATH
 fi
 
 sleep 30
