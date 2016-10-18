@@ -33,6 +33,11 @@ echo >> $LOG_PATH/ifconfig.log
 echo 'after running "cf dev start"' >> $LOG_PATH/ifconfig.log
 ifconfig -a >> $LOG_PATH/ifconfig.log
 
+brew install tinyproxy || log_error "brew install tinyproxy"
+if [ ! -d $TINYPROXY_PATH ]; then
+  mkdir -p $TINYPROXY_PATH
+  cp tinyproxy.conf $TINYPROXY_PATH
+fi
 tinyproxy -c $TINYPROXY_PATH/tinyproxy.conf 1> $LOG_PATH/tinyproxy_stdout.log 2> $LOG_PATH/tinyproxy_stderr.log || log_error "tinyproxy"
 log_state 'tinyproxy daemon started'
 
