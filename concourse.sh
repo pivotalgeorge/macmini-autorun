@@ -12,8 +12,8 @@ cd $CONCOURSE_PATH
 if [ ! -f Vagrantfile ]; then
   brew cask install vagrant
   vagrant init concourse/lite
-  sed -i -e 's/^end/end\
-config.vm.network "forwarded_port", guest: 8080, host: '"$CONCOURSE_EXTERNAL_PORT"'/' Vagrantfile
+  sed -ie 's/^end/  config.vm.network "forwarded_port", guest: 8080, host: '"$CONCOURSE_EXTERNAL_PORT"'\
+end/' Vagrantfile
 fi
 
 vagrant up 1> ~/workspace/macmini-autorun/stdout.log 2> ~/workspace/macmini-autorun/stderr.log
