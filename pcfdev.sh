@@ -2,7 +2,7 @@
 TINYPROXY_PATH=$HOME/workspace/tinyproxy
 PROXY_EXTERNAL_PORT=9999
 LOG_PATH=$HOME/workspace/macmini-autorun/logs
-MACHINE_NAME=`hostname -s`
+MACHINE_NAME=MACHINE_NAME
 
 PATH=$PATH:/usr/local/bin:/usr/local/sbin
 
@@ -41,6 +41,6 @@ fi
 tinyproxy -c $TINYPROXY_PATH/tinyproxy.conf 1> $LOG_PATH/tinyproxy_stdout.log 2> $LOG_PATH/tinyproxy_stderr.log || log_error "tinyproxy"
 log_state 'tinyproxy daemon started'
 
-ssh -nNTfR $PROXY_EXTERNAL_PORT:localhost:8888 pivotal@$MACHINE_NAME || log_error "ssh tunnel"
+ssh -nNTfR $PROXY_EXTERNAL_PORT:localhost:8888 pivotal@$MACHINE_NAME 1> $LOG_PATH/ssh_stdout.log 2> $LOG_PATH/ssh_stderr.log || log_error "ssh tunnel"
 log_state "ssh tunnel opened on $PROXY_EXTERNAL_PORT"
 
